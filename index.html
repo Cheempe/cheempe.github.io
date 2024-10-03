@@ -7,19 +7,53 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        h1 {
+            text-align: center;
+            color: #333;
         }
-        th, td {
-            border: 1px solid #000;
-            padding: 8px;
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .day {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 250px;
             text-align: center;
         }
+        .subject {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .lecture {
+            background-color: #007bff; /* Синій для лекцій */
+        }
+        .practice {
+            background-color: #28a745; /* Зелений для практик */
+        }
         button {
-            margin: 20px;
-            padding: 10px 15px;
+            background-color: #343a40;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #495057;
         }
     </style>
 </head>
@@ -28,66 +62,67 @@
     <h1>Розклад на тиждень</h1>
     <button onclick="toggleWeek()">Переключити на парну/непарну тиждень</button>
 
-    <table id="schedule">
-        <thead>
-            <tr>
-                <th>День</th>
-                <th>Предмет 1</th>
-                <th>Предмет 2</th>
-                <th>Предмет 3</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Понеділок</td>
-                <td id="mon-subject1">Математика</td>
-                <td id="mon-subject2">Фізика</td>
-                <td id="mon-subject3">Інформатика</td>
-            </tr>
-            <tr>
-                <td>Вівторок</td>
-                <td id="tue-subject1">Хімія</td>
-                <td id="tue-subject2">Біологія</td>
-                <td id="tue-subject3">Географія</td>
-            </tr>
-            <tr>
-                <td>Середа</td>
-                <td id="wed-subject1">Історія</td>
-                <td id="wed-subject2">Література</td>
-                <td id="wed-subject3">Фізкультура</td>
-            </tr>
-            <tr>
-                <td>Четвер</td>
-                <td id="thu-subject1">Англійська</td>
-                <td id="thu-subject2">Спорт</td>
-                <td id="thu-subject3">Музика</td>
-            </tr>
-            <tr>
-                <td>П'ятниця</td>
-                <td id="fri-subject1">Економіка</td>
-                <td id="fri-subject2">Технології</td>
-                <td id="fri-subject3">Філософія</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container" id="schedule">
+        <!-- Розклад заповниться через JavaScript -->
+    </div>
 
     <script>
         let isOddWeek = true;
 
         const oddWeekSubjects = {
-            mon: ["Математика", "Фізика", "Інформатика"],
-            tue: ["Хімія", "Біологія", "Географія"],
-            wed: ["Історія", "Література", "Фізкультура"],
-            thu: ["Англійська", "Спорт", "Музика"],
-            fri: ["Економіка", "Технології", "Філософія"],
+            mon: [
+                { name: "Математика", type: "lecture", link: "#" },
+                { name: "Фізика", type: "practice", link: "#" },
+                { name: "Інформатика", type: "lecture", link: "#" }
+            ],
+            tue: [
+                { name: "Хімія", type: "lecture", link: "#" },
+                { name: "Біологія", type: "practice", link: "#" },
+                { name: "Географія", type: "lecture", link: "#" }
+            ],
+            wed: [
+                { name: "Історія", type: "practice", link: "#" },
+                { name: "Література", type: "lecture", link: "#" },
+                { name: "Фізкультура", type: "practice", link: "#" }
+            ],
+            thu: [
+                { name: "Англійська", type: "lecture", link: "#" },
+                { name: "Спорт", type: "practice", link: "#" },
+                { name: "Музика", type: "lecture", link: "#" }
+            ],
+            fri: [
+                { name: "Економіка", type: "lecture", link: "#" },
+                { name: "Технології", type: "practice", link: "#" },
+                { name: "Філософія", type: "lecture", link: "#" }
+            ],
         };
 
         const evenWeekSubjects = {
-            mon: ["Алгебра", "Геометрія", "Програмування"],
-            tue: ["Хімія", "Біологія", "Екологія"],
-            wed: ["Історія", "Література", "Спорт"],
-            thu: ["Англійська", "Фізкультура", "Музика"],
-            fri: ["Економіка", "Технології", "Філософія"],
+            mon: [
+                { name: "Алгебра", type: "lecture", link: "#" },
+                { name: "Геометрія", type: "practice", link: "#" },
+                { name: "Програмування", type: "lecture", link: "#" }
+            ],
+            tue: [
+                { name: "Хімія", type: "lecture", link: "#" },
+                { name: "Біологія", type: "practice", link: "#" },
+                { name: "Екологія", type: "lecture", link: "#" }
+            ],
+            wed: [
+                { name: "Історія", type: "practice", link: "#" },
+                { name: "Література", type: "lecture", link: "#" },
+                { name: "Спорт", type: "practice", link: "#" }
+            ],
+            thu: [
+                { name: "Англійська", type: "lecture", link: "#" },
+                { name: "Фізкультура", type: "practice", link: "#" },
+                { name: "Музика", type: "lecture", link: "#" }
+            ],
+            fri: [
+                { name: "Економіка", type: "lecture", link: "#" },
+                { name: "Технології", type: "practice", link: "#" },
+                { name: "Філософія", type: "lecture", link: "#" }
+            ],
         };
 
         function toggleWeek() {
@@ -97,26 +132,32 @@
 
         function updateSchedule() {
             const subjects = isOddWeek ? oddWeekSubjects : evenWeekSubjects;
-            document.getElementById("mon-subject1").textContent = subjects.mon[0];
-            document.getElementById("mon-subject2").textContent = subjects.mon[1];
-            document.getElementById("mon-subject3").textContent = subjects.mon[2];
+            const scheduleContainer = document.getElementById("schedule");
+            scheduleContainer.innerHTML = '';
 
-            document.getElementById("tue-subject1").textContent = subjects.tue[0];
-            document.getElementById("tue-subject2").textContent = subjects.tue[1];
-            document.getElementById("tue-subject3").textContent = subjects.tue[2];
+            for (const day in subjects) {
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'day';
+                dayDiv.innerHTML = `<h3>${day.charAt(0).toUpperCase() + day.slice(1)}</h3>`;
+                
+                subjects[day].forEach(subject => {
+                    const subjectDiv = document.createElement('div');
+                    subjectDiv.className = `subject ${subject.type}`;
+                    subjectDiv.innerHTML = `
+                        <span>${subject.name}</span>
+                        <a href="${subject.link}">
+                            <button>Детальніше</button>
+                        </a>
+                    `;
+                    dayDiv.appendChild(subjectDiv);
+                });
 
-            document.getElementById("wed-subject1").textContent = subjects.wed[0];
-            document.getElementById("wed-subject2").textContent = subjects.wed[1];
-            document.getElementById("wed-subject3").textContent = subjects.wed[2];
-
-            document.getElementById("thu-subject1").textContent = subjects.thu[0];
-            document.getElementById("thu-subject2").textContent = subjects.thu[1];
-            document.getElementById("thu-subject3").textContent = subjects.thu[2];
-
-            document.getElementById("fri-subject1").textContent = subjects.fri[0];
-            document.getElementById("fri-subject2").textContent = subjects.fri[1];
-            document.getElementById("fri-subject3").textContent = subjects.fri[2];
+                scheduleContainer.appendChild(dayDiv);
+            }
         }
+
+        // Початкове завантаження розкладу
+        updateSchedule();
     </script>
 
 </body>
