@@ -19,11 +19,11 @@
             font-weight: bold;
         }
         .lecture {
-            background-color: #ffc0cb; /* Пастельний рожевий для лекцій */
+            background-color: #ffc0cb; 
             color: #333;
         }
         .practice {
-            background-color: #ffebcd; /* Пастельний бежевий для практик */
+            background-color: #ffebcd; 
             color: #333;
         }
         .time {
@@ -31,15 +31,29 @@
         }
         .btn-toggle {
             margin-top: 20px;
-            background-color: #6c757d;
+            background-color: #ff9aa2;
             color: white;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            border-radius: 8px;
+            outline: none;
         }
         .btn-toggle:hover {
-            background-color: #5a6268;
+            background-color: #ff6f85;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .btn{
+            background-color: #ff9aa2;
+            border-radius: 8px;
+        }
+
+        .btn:hover {
+            background-color: #ff6f85;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -60,7 +74,7 @@
                         <div class="lecture p-2 my-2">
                             <span class="time">9:50-11:25</span> Англійська мова<br>
                             <strong>Томенко М.Г.</strong>
-                            <a href="https://meet.google.com/iqh-meur-efb?authuser=0" class="btn btn-sm btn-primary float-right">Перейти</a>
+                            <a href="https://meet.google.com/iqh-meur-efb?authuser=0" class="btn btn-sm float-right">Перейти</a>
                         </div>
                         <div class="practice p-2 my-2">
                             <span class="time">11:40-13:15</span> Німецька мова<br>
@@ -91,13 +105,13 @@
                         <div class="lecture p-2 my-2">
                             <span class="time">9:50-11:25</span> Правове регулювання міжнародних конфліктів (Лекція)<br>
                         </div>
-                        <div class="practice p-2 my-2">
+                        <div class="practice p-2 my-2 even-week">
                             <span class="time">11:40-13:15</span> Правове регулювання міжнародних конфліктів (Практика)<br>
                         </div>
                         <div class="lecture p-2 my-2">
                             <span class="time">13:30-15:05</span> Англійська мова Лексика<br>
                             <strong>Гродська Е.Б.</strong>
-                            <a href="https://meet.google.com/zmx-zdak-xdn" class="btn btn-sm btn-primary float-right">Перейти</a>
+                            <a href="https://meet.google.com/zmx-zdak-xdn" class="btn btn-sm float-right">Перейти</a>
                         </div>
                     </div>
                 </div>
@@ -130,10 +144,7 @@
                         <div class="lecture p-2 my-2">
                             <span class="time">9:50-11:25</span> Міжнародні організації (Лекція)<br>
                         </div>
-                        <div class="practice p-2 my-2 odd-week d-none">
-                            <span class="time">11:40-13:15</span> Міжнародні організації (Практика)<br>
-                        </div>
-                        <div class="practice p-2 my-2 even-week">
+                        <div class="practice p-2 my-2 odd-week">
                             <span class="time">11:40-13:15</span> Міжнародні організації (Практика)<br>
                         </div>
                     </div>
