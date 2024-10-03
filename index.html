@@ -6,61 +6,79 @@
     <title>Розклад на тиждень</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fce4ec; /* Light pastel pink background */
             margin: 0;
             padding: 20px;
+            color: #4a4a4a; /* Soft gray for text */
         }
         h1 {
             text-align: center;
-            color: #333;
+            color: #ad1457; /* Deep pink for title */
+            margin-bottom: 20px;
         }
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 20px;
         }
         .day {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 10px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            width: 300px;
+            width: 320px;
             text-align: center;
         }
+        .day h3 {
+            color: #d81b60; /* Darker pink for day names */
+            margin-bottom: 10px;
+            border-bottom: 2px solid #f06292; /* Soft border */
+            padding-bottom: 5px;
+        }
         .subject {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-            color: #fff;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            color: #ffffff;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 14px;
+            line-height: 1.5;
         }
         .lecture {
-            background-color: #007bff; /* Синій для лекцій */
+            background-color: #f48fb1; /* Pastel pink for lectures */
         }
         .practice {
-            background-color: #28a745; /* Зелений для практик */
+            background-color: #ba68c8; /* Light purple for practices */
         }
         button {
-            background-color: #343a40;
+            background-color: #ad1457;
             color: #fff;
             border: none;
             border-radius: 5px;
-            padding: 10px;
+            padding: 10px 15px;
             cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #495057;
+            background-color: #c2185b; /* Slightly brighter on hover */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
         }
     </style>
 </head>
 <body>
 
     <h1>Розклад на тиждень</h1>
-    <button onclick="toggleWeek()">Переключити на парну/непарну тиждень</button>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <button onclick="toggleWeek()">Переключити на парну/непарну тиждень</button>
+    </div>
 
     <div class="container" id="schedule">
         <!-- Розклад заповниться через JavaScript -->
@@ -91,7 +109,6 @@
             fri: [
                 { name: "Міжнародні організації (Лекція)", teacher: "", type: "lecture", time: "9:50-11:25" },
                 { name: "Міжнародні організації (Практика)", teacher: "", type: "practice", time: "11:40-13:15", oddWeek: true },
-                { name: "Міжнародні організації (Практика)", teacher: "", type: "practice", time: "11:40-13:15", evenWeek: true }
             ]
         };
 
