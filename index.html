@@ -4,147 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Розклад на тиждень</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fce4ec; /* Light pastel pink background */
-            margin: 0;
-            padding: 20px;
-            color: #4a4a4a; /* Soft gray for text */
+            background-color: #f7f7f7;
         }
-        h1 {
-            text-align: center;
-            color: #ad1457; /* Deep pink for title */
+        .card {
             margin-bottom: 20px;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .day {
-            background-color: #ffffff;
-            border-radius: 12px;
+            border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 320px;
-            text-align: center;
         }
-        .day h3 {
-            color: #d81b60; /* Darker pink for day names */
-            margin-bottom: 10px;
-            border-bottom: 2px solid #f06292; /* Soft border */
-            padding-bottom: 5px;
-        }
-        .subject {
-            margin: 15px 0;
-            padding: 15px;
-            border-radius: 8px;
-            color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            line-height: 1.5;
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
         }
         .lecture {
-            background-color: #f48fb1; /* Pastel pink for lectures */
+            background-color: #ffc0cb; /* Пастельний рожевий для лекцій */
+            color: #333;
         }
         .practice {
-            background-color: #ba68c8; /* Light purple for practices */
+            background-color: #ffebcd; /* Пастельний бежевий для практик */
+            color: #333;
         }
-        button {
-            background-color: #ad1457;
-            color: #fff;
+        .time {
+            font-weight: bold;
+        }
+        .btn-toggle {
+            margin-top: 20px;
+            background-color: #6c757d;
+            color: white;
             border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
+            padding: 10px 20px;
             cursor: pointer;
-            font-size: 14px;
             transition: background-color 0.3s ease;
         }
-        button:hover {
-            background-color: #c2185b; /* Slightly brighter on hover */
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
+        .btn-toggle:hover {
+            background-color: #5a6268;
         }
     </style>
 </head>
 <body>
 
-    <h1>Розклад на тиждень</h1>
-    <div style="text-align: center; margin-bottom: 20px;">
-        <button onclick="toggleWeek()">Переключити на парну/непарну тиждень</button>
-    </div>
+    <div class="container">
+        <h1 class="text-center my-4">Розклад на тиждень</h1>
+        <div class="text-center">
+            <span id="weekStatus">Непарний тиждень</span>
+            <button class="btn-toggle" onclick="toggleWeek()">Переключити на парну тиждень</button>
+        </div>
 
-    <div class="container" id="schedule">
-        <!-- Розклад заповниться через JavaScript -->
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Понеділок</h3>
+                        <div class="lecture p-2 my-2">
+                            <span class="time">9:50-11:25</span> Англійська мова<br>
+                            <strong>Томенко М.Г.</strong>
+                            <a href="https://meet.google.com/iqh-meur-efb?authuser=0" class="btn btn-sm btn-primary float-right">Перейти</a>
+                        </div>
+                        <div class="practice p-2 my-2">
+                            <span class="time">11:40-13:15</span> Німецька мова<br>
+                            <strong>Добровольська Н. Л.</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Вівторок</h3>
+                        <div class="lecture p-2 my-2">
+                            <span class="time">9:50-11:25</span> Міжкультурні комунікації (Лекція)<br>
+                        </div>
+                        <div class="practice p-2 my-2">
+                            <span class="time">11:40-13:15</span> Міжкультурні комунікації (Практика)<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Середа</h3>
+                        <div class="lecture p-2 my-2">
+                            <span class="time">9:50-11:25</span> Правове регулювання міжнародних конфліктів (Лекція)<br>
+                        </div>
+                        <div class="practice p-2 my-2">
+                            <span class="time">11:40-13:15</span> Правове регулювання міжнародних конфліктів (Практика)<br>
+                        </div>
+                        <div class="lecture p-2 my-2">
+                            <span class="time">13:30-15:05</span> Англійська мова Лексика<br>
+                            <strong>Гродська Е.Б.</strong>
+                            <a href="https://meet.google.com/zmx-zdak-xdn" class="btn btn-sm btn-primary float-right">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Четвер</h3>
+                        <div class="lecture p-2 my-2">
+                            <span class="time">9:50-11:25</span> Дипломатичний протокол та етикет (Лекція)<br>
+                        </div>
+                        <div class="practice p-2 my-2 even-week">
+                            <span class="time">11:40-13:15</span> Дипломатичний протокол та етикет (Практика)<br>
+                        </div>
+                        <div class="practice p-2 my-2 odd-week d-none">
+                            <span class="time">11:40-13:15</span> Німецька мова<br>
+                            <strong>Добровольська Н. Л.</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">П'ятниця</h3>
+                        <div class="lecture p-2 my-2">
+                            <span class="time">9:50-11:25</span> Міжнародні організації (Лекція)<br>
+                        </div>
+                        <div class="practice p-2 my-2 odd-week d-none">
+                            <span class="time">11:40-13:15</span> Міжнародні організації (Практика)<br>
+                        </div>
+                        <div class="practice p-2 my-2 even-week">
+                            <span class="time">11:40-13:15</span> Міжнародні організації (Практика)<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
         let isOddWeek = true;
 
-        const subjects = {
-            mon: [
-                { name: "Англійська мова", teacher: "Томенко М.Г.", type: "lecture", link: "https://meet.google.com/iqh-meur-efb?authuser=0", time: "9:50-11:25" },
-                { name: "Німецька мова", teacher: "Добровольська Н. Л.", type: "practice", time: "11:40-13:15" }
-            ],
-            tue: [
-                { name: "Міжкультурні комунікації (Лекція)", teacher: "", type: "lecture", time: "9:50-11:25" },
-                { name: "Міжкультурні комунікації (Практика)", teacher: "", type: "practice", time: "11:40-13:15" }
-            ],
-            wed: [
-                { name: "Правове регулювання міжнародних конфліктів (Лекція)", teacher: "", type: "lecture", time: "9:50-11:25" },
-                { name: "Правове регулювання міжнародних конфліктів (Практика)", teacher: "", type: "practice", time: "11:40-13:15", evenWeek: true },
-                { name: "Англійська мова Лексика", teacher: "Гродська Е.Б.", type: "lecture", link: "https://meet.google.com/zmx-zdak-xdn", time: "13:30-15:05" }
-            ],
-            thu: [
-                { name: "Дипломатичний протокол та етикет (Лекція)", teacher: "", type: "lecture", time: "9:50-11:25" },
-                { name: "Дипломатичний протокол та етикет (Практика)", teacher: "", type: "practice", time: "11:40-13:15", evenWeek: true },
-                { name: "Німецька мова", teacher: "Добровольська Н. Л.", type: "practice", time: "11:40-13:15", oddWeek: true }
-            ],
-            fri: [
-                { name: "Міжнародні організації (Лекція)", teacher: "", type: "lecture", time: "9:50-11:25" },
-                { name: "Міжнародні організації (Практика)", teacher: "", type: "practice", time: "11:40-13:15", oddWeek: true },
-            ]
-        };
-
         function toggleWeek() {
             isOddWeek = !isOddWeek;
-            updateSchedule();
+            document.getElementById('weekStatus').textContent = isOddWeek ? 'Непарний тиждень' : 'Парний тиждень';
+            
+            document.querySelectorAll('.even-week').forEach(el => {
+                el.classList.toggle('d-none', isOddWeek);
+            });
+            document.querySelectorAll('.odd-week').forEach(el => {
+                el.classList.toggle('d-none', !isOddWeek);
+            });
+
+            document.querySelector('.btn-toggle').textContent = isOddWeek ? 'Переключити на парний тиждень' : 'Переключити на непарний тиждень';
         }
-
-        function updateSchedule() {
-            const scheduleContainer = document.getElementById("schedule");
-            scheduleContainer.innerHTML = '';
-
-            for (const day in subjects) {
-                const dayDiv = document.createElement('div');
-                dayDiv.className = 'day';
-                dayDiv.innerHTML = `<h3>${day.charAt(0).toUpperCase() + day.slice(1)}</h3>`;
-                
-                subjects[day].forEach(subject => {
-                    if ((subject.evenWeek && isOddWeek) || (subject.oddWeek && !isOddWeek)) return;
-
-                    const subjectDiv = document.createElement('div');
-                    subjectDiv.className = `subject ${subject.type}`;
-                    subjectDiv.innerHTML = `
-                        <span>${subject.time}: ${subject.name} <br> <strong>${subject.teacher}</strong></span>
-                        ${subject.link ? `<a href="${subject.link}"><button>Перейти</button></a>` : ''}
-                    `;
-                    dayDiv.appendChild(subjectDiv);
-                });
-
-                scheduleContainer.appendChild(dayDiv);
-            }
-        }
-
-        // Початкове завантаження розкладу
-        updateSchedule();
     </script>
-
 </body>
 </html>
