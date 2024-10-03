@@ -26,7 +26,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin: 10px;
             padding: 20px;
-            width: 250px;
+            width: 300px;
             text-align: center;
         }
         .subject {
@@ -69,60 +69,30 @@
     <script>
         let isOddWeek = true;
 
-        const oddWeekSubjects = {
+        const subjects = {
             mon: [
-                { name: "Математика", type: "lecture", link: "#" },
-                { name: "Фізика", type: "practice", link: "#" },
-                { name: "Інформатика", type: "lecture", link: "#" }
+                { name: "Англійська мова", teacher: "Томенко М.Г.", type: "lecture", link: "https://meet.google.com/iqh-meur-efb?authuser=0", time: "9:50-11:25" },
+                { name: "Німецька мова", teacher: "Добровольська Н. Л.", type: "practice", time: "11:40-13:15" }
             ],
             tue: [
-                { name: "Хімія", type: "lecture", link: "#" },
-                { name: "Біологія", type: "practice", link: "#" },
-                { name: "Географія", type: "lecture", link: "#" }
+                { name: "Міжкультурні комунікації (Лекція)", teacher: "", type: "lecture", time: "9:50-11:25" },
+                { name: "Міжкультурні комунікації (Практика)", teacher: "", type: "practice", time: "11:40-13:15" }
             ],
             wed: [
-                { name: "Історія", type: "practice", link: "#" },
-                { name: "Література", type: "lecture", link: "#" },
-                { name: "Фізкультура", type: "practice", link: "#" }
+                { name: "Правове регулювання міжнародних конфліктів (Лекція)", teacher: "", type: "lecture", time: "9:50-11:25" },
+                { name: "Правове регулювання міжнародних конфліктів (Практика)", teacher: "", type: "practice", time: "11:40-13:15", evenWeek: true },
+                { name: "Англійська мова Лексика", teacher: "Гродська Е.Б.", type: "lecture", link: "https://meet.google.com/zmx-zdak-xdn", time: "13:30-15:05" }
             ],
             thu: [
-                { name: "Англійська", type: "lecture", link: "#" },
-                { name: "Спорт", type: "practice", link: "#" },
-                { name: "Музика", type: "lecture", link: "#" }
+                { name: "Дипломатичний протокол та етикет (Лекція)", teacher: "", type: "lecture", time: "9:50-11:25" },
+                { name: "Дипломатичний протокол та етикет (Практика)", teacher: "", type: "practice", time: "11:40-13:15", evenWeek: true },
+                { name: "Німецька мова", teacher: "Добровольська Н. Л.", type: "practice", time: "11:40-13:15", oddWeek: true }
             ],
             fri: [
-                { name: "Економіка", type: "lecture", link: "#" },
-                { name: "Технології", type: "practice", link: "#" },
-                { name: "Філософія", type: "lecture", link: "#" }
-            ],
-        };
-
-        const evenWeekSubjects = {
-            mon: [
-                { name: "Алгебра", type: "lecture", link: "#" },
-                { name: "Геометрія", type: "practice", link: "#" },
-                { name: "Програмування", type: "lecture", link: "#" }
-            ],
-            tue: [
-                { name: "Хімія", type: "lecture", link: "#" },
-                { name: "Біологія", type: "practice", link: "#" },
-                { name: "Екологія", type: "lecture", link: "#" }
-            ],
-            wed: [
-                { name: "Історія", type: "practice", link: "#" },
-                { name: "Література", type: "lecture", link: "#" },
-                { name: "Спорт", type: "practice", link: "#" }
-            ],
-            thu: [
-                { name: "Англійська", type: "lecture", link: "#" },
-                { name: "Фізкультура", type: "practice", link: "#" },
-                { name: "Музика", type: "lecture", link: "#" }
-            ],
-            fri: [
-                { name: "Економіка", type: "lecture", link: "#" },
-                { name: "Технології", type: "practice", link: "#" },
-                { name: "Філософія", type: "lecture", link: "#" }
-            ],
+                { name: "Міжнародні організації (Лекція)", teacher: "", type: "lecture", time: "9:50-11:25" },
+                { name: "Міжнародні організації (Практика)", teacher: "", type: "practice", time: "11:40-13:15", oddWeek: true },
+                { name: "Міжнародні організації (Практика)", teacher: "", type: "practice", time: "11:40-13:15", evenWeek: true }
+            ]
         };
 
         function toggleWeek() {
@@ -131,7 +101,6 @@
         }
 
         function updateSchedule() {
-            const subjects = isOddWeek ? oddWeekSubjects : evenWeekSubjects;
             const scheduleContainer = document.getElementById("schedule");
             scheduleContainer.innerHTML = '';
 
@@ -141,13 +110,13 @@
                 dayDiv.innerHTML = `<h3>${day.charAt(0).toUpperCase() + day.slice(1)}</h3>`;
                 
                 subjects[day].forEach(subject => {
+                    if ((subject.evenWeek && isOddWeek) || (subject.oddWeek && !isOddWeek)) return;
+
                     const subjectDiv = document.createElement('div');
                     subjectDiv.className = `subject ${subject.type}`;
                     subjectDiv.innerHTML = `
-                        <span>${subject.name}</span>
-                        <a href="${subject.link}">
-                            <button>Детальніше</button>
-                        </a>
+                        <span>${subject.time}: ${subject.name} <br> <strong>${subject.teacher}</strong></span>
+                        ${subject.link ? `<a href="${subject.link}"><button>Перейти</button></a>` : ''}
                     `;
                     dayDiv.appendChild(subjectDiv);
                 });
